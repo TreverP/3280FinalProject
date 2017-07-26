@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Width="525" Height="600">
+	<Grid Margin="5,0,5,-225" HorizontalAlignment="Center">
+		<Menu x:Name="MenuBar" HorizontalAlignment="Left" Height="97" Margin="10,154,0,0" VerticalAlignment="Top" Width="143">
+			<Button x:Name="CreateInvoiceBtn" Content="Create Invoice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Click="CreateInvoiceBtn_Click" Height="25"/>
+			<Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Width="129" Click="EditInvoiceBtn_Click" Height="25"/>
+			<Button x:Name="DeleteInvoiceBtn" Content="Delete Invoice" Width="128" Click="DeleteInvoiceBtn_Click" Height="25"/>
+		</Menu>
+		<Menu HorizontalAlignment="Left" Height="44" Margin="109,10,0,0" VerticalAlignment="Top" Width="287" RenderTransformOrigin="0.589,0.519" Foreground="#FF302A2A" BorderBrush="#FF302C2C">
+			<Button x:Name="SearchForInvoiceBtn" Content="Search For Invoice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Click="SearchForInvoiceBtn_Click" RenderTransformOrigin="1.641,0.227" Height="35"/>
+			<Button x:Name="UpdateDefTableBtn" Content="Definition Table" VerticalAlignment="Top" Width="129" RenderTransformOrigin="-0.039,0.682" Click="UpdateDefTableBtn_Click" IsEnabled="False" Height="35"/>
+		</Menu>
+		<GroupBox x:Name="InvoiceInfoGroupBx" Header="Invoice Info" HorizontalAlignment="Left" Height="192" Margin="158,59,0,0" VerticalAlignment="Top" Width="332" BorderBrush="#FF616466">
+			<Button x:Name="Add_UpdateBtn" Content="Add/Update" HorizontalAlignment="Left" Margin="225,100,-2,0" VerticalAlignment="Top" Width="97"/>
+		</GroupBox>
+		<Label x:Name="InvoiceDateLbl" Content="Invoice Date :" HorizontalAlignment="Left" Margin="158,111,0,0" VerticalAlignment="Top" Width="87"/>
+		<Label x:Name="ItemLbl" Content="Item : " HorizontalAlignment="Left" Margin="158,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.397,1.269" Width="58"/>
+		<Label x:Name="ItemPriceLbl" Content="Item Price : " HorizontalAlignment="Left" Margin="158,171,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.269" Width="71"/>
+		<Label x:Name="InvoiceTotalLbl" Content="Invoice Total :" HorizontalAlignment="Left" Margin="167,210,0,0" VerticalAlignment="Top" Height="33" FontSize="18"/>
+		<ComboBox x:Name="ItemDropDownBox" HorizontalAlignment="Left" Margin="259,144,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False" SelectionChanged="ItemDropDownBox_SelectionChanged"/>
+		<TextBox x:Name="ItemPriceTxtBx" HorizontalAlignment="Left" Height="23" Margin="259,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="ItemPriceTxtBx_TextChanged" IsEnabled="False"/>
+		<Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="401,224,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
+		<DataGrid HorizontalAlignment="Left" Height="277" Margin="27,256,0,0" VerticalAlignment="Top" Width="449" BorderBrush="#FF777F87"/>
+		<ComboBox x:Name="InvoiceNumberComBx" HorizontalAlignment="Left" Margin="259,85,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InvoiceNumberComBx_SelectionChanged"/>
+		<Button x:Name="RemoveItemButton" Content="Remove Item" HorizontalAlignment="Left" Margin="401,538,0,0" VerticalAlignment="Top" Width="75"/>
+		<Label x:Name="InvoiceNumLbl" Content="Invoice Number:" HorizontalAlignment="Left" Margin="158,81,0,0" VerticalAlignment="Top" Width="104"/>
+		<DatePicker x:Name="InvoiceDatePicker" HorizontalAlignment="Left" Margin="259,113,0,0" VerticalAlignment="Top" Width="120"/>
+		<TextBox x:Name="TotalTxtBx" HorizontalAlignment="Left" Height="34" Margin="287,212,0,0" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" Width="109" FontSize="18" TextChanged="TotalTxtBx_TextChanged"/>
+
+	</Grid>
 </Window>
