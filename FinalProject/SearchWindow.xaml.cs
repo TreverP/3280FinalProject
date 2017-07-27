@@ -14,32 +14,33 @@ using System.Windows.Shapes;
 
 namespace CS3280GP
 {
-	/// <summary>
-	/// Interaction logic for SearchWindow.xaml
-	/// </summary>
-	public partial class SearchWindow : Window
-	{
-		public SearchWindow()
-		{
+    /// <summary>
+    /// Interaction logic for SearchWindow.xaml
+    /// </summary>
+    public partial class SearchWindow : Window
+    {
+        public SearchWindow()
+        {
+            
+        }
 
-		}
-
-		/// <summary>
-		/// method for handling exceptions
-		/// </summary>
-		/// <param name="sClass">class from which exception originated</param>
-		/// <param name="sMethod">method from which exception originated</param>
-		/// <param name="sMessage">exception message</param>
-		private void HandleError(string sClass, string sMethod, string sMessage)
-		{
-			try
-			{
-				MessageBox.Show(sClass + "." + sMethod + ": " + sMessage);
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(sClass + "." + sMethod + " (HandleError Exception): " + ex.Message + " " + sMessage);
-			}
-		}
-	}
+        /// <summary>
+        /// method for handling excpetions
+        /// </summary>
+        /// <param name="sClass">class from which exception originated</param>
+        /// <param name="sMethod">method from which exception originated</param>
+        /// <param name="sMessage">exception message</param>
+        private void HandleError(string sClass, string sMethod, string sMessage)
+        {
+            try
+            {
+                MessageBox.Show(sClass + "." + sMethod + ": " + sMessage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(sClass + "." + sMethod + " (HandleError Exception): " + ex.Message + " " + sMessage);
+            }
+        }
+    }
 }
+
