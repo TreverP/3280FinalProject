@@ -63,6 +63,21 @@ namespace FinalProject
         {
             return "SELECT * FROM ItemDesc";
         }
+
+        public string UpdateItem(string sItemDesc, string sItemCode, string sItemCost)
+        {
+            return "UPDATE ItemDesc SET ItemCode = "+ sItemCode + ", ItemDesc = " + sItemDesc + ", Cost = " + sItemCost;
+        }
+
+        public string CreateItem(string sItemDesc, string sItemCode, string sItemCost)
+        {
+            return "INSERT INTO ItemDesc (ItemCode, ItemDesc, Cost) VALUES (" + sItemCode + ", " + sItemDesc + ", " + sItemCost + ")";
+        }
+
+        public string SelectItemByCode(string sItemCode)
+        {
+            return "SELECT * FROM ItemDesc WHERE ItemCode = " + sItemCode;
+        }
     }
 
 }

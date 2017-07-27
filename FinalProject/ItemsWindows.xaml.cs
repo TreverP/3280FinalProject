@@ -37,7 +37,6 @@ namespace FinalProject
         /// </summary>
         private clsSQL sql;
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -68,6 +67,10 @@ namespace FinalProject
         }
 
         // Internal methods
+
+        /// <summary>
+        /// Fetch data from DB and populate Items DataGrid
+        /// </summary>
         private void PopulateItemsDataGrid()
         {
             try
@@ -93,17 +96,10 @@ namespace FinalProject
         /// <param name="e"></param>
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        /// <summary>
-        /// Edit selected Item
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            // First check to see if any invoices are using Item. If so display message that includes Invoice number(s)
+            // else delete the item 
+            // Refresh ItemsDataGrid
+            PopulateItemsDataGrid();
         }
 
         /// <summary>
@@ -113,7 +109,29 @@ namespace FinalProject
         /// <param name="e"></param>
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            // When invoked check to see if Item with ItemCode already exists. If so display message, else 
+            // create new Item
+            // Refresh ItemsDataGrid
+            PopulateItemsDataGrid();
+        }
 
+        /// <summary>
+        /// Update selected Item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // When invoked update the selected Item.
+            // However, the ItemCode can NOT be updated as it is a PK (readonly)
+            // Refresh ItemsDataGrid
+            PopulateItemsDataGrid();
+        }
+
+        private void ItemsWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.Hide();
+            e.Cancel = true;
         }
 
         /// <summary>
@@ -123,7 +141,7 @@ namespace FinalProject
         /// <param name="e"></param>
         private void MainMenuBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Hide();
         }
     }
 }

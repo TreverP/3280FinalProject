@@ -174,10 +174,15 @@ namespace FinalProject
 		{
 		    try
 		    {
+                // Only allow navigation IF:
+                // - Invoice is not being edited
+                // - New Invoice is not being entered
+
 		        itemsWindow = new ItemsWindow(db, mydb);
 		        this.Hide();
 		        itemsWindow.ShowDialog();
 		        this.Show();
+                // Update displayed invoice and Items dropdown list
 		    }
 		    catch (Exception ex)
 		    {
