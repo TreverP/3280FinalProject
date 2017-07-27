@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Item Definition" Height="300" Width="610.121">
     <Grid>
-        <DataGrid x:Name="ItemDG" HorizontalAlignment="Left" Margin="10,10,0,55.5" Width="300"/>
+        <DataGrid x:Name="ItemDG" HorizontalAlignment="Left" Margin="10,10,0,55.5" Width="300" Grid.Column="3" CanUserReorderColumns="False" CanUserSortColumns="False" AlternatingRowBackground="#FFE7E7E7" AlternationCount="1" />
+
         <Grid HorizontalAlignment="Left" Height="40" Margin="10,222,0,0" VerticalAlignment="Top" Width="203">
             <Button x:Name="MainMenuBtn" Content="Main Menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="74" Click="MainMenuBtn_Click"/>
         </Grid>
