@@ -220,6 +220,13 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
+#Custom
+FinalProject/bin/Debug/
+FinalProject/obj/Debug/
+
+bin/Debug/
+obj/Debug/
+
 # SQL Server files
 *.mdf
 *.ldf
