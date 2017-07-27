@@ -27,7 +27,7 @@ namespace FinalProject
 		/// Hook up when others submit code, verify names.
 		/// </summary>
 		clsDataAccess db;
-		//clsSQL mydb = new clsSQL();
+		clsSQL mydb = new clsSQL();
 		DataTable dt;
 		
         public MainWindow()
@@ -97,9 +97,10 @@ namespace FinalProject
 		{
 			try
 			{
-				//SearchWindow search = new SearchWindow();
-				//SearchWindow.Show(); //Bring search window up to the front.
-				//this.Hide(); //Hide the main window.
+				SearchWindow search = new SearchWindow(db, mydb);
+                this.Hide(); //Hide the main window.
+                search.ShowDialog(); //Bring search window up to the front.
+                this.Show();
 			}
 			catch (Exception ex)
 			{

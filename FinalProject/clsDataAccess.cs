@@ -149,4 +149,3 @@ using System.Reflection;
 		}
 
 }
-			return iNumRows;
