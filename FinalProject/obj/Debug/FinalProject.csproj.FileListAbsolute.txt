@@ -1,0 +1,16 @@
+H:\Class\FP\FinalProject\obj\Debug\FinalProject.csprojResolveAssemblyReference.cache
+H:\Class\FP\FinalProject\obj\Debug\MainWindow.g.cs
+H:\Class\FP\FinalProject\obj\Debug\SearchWindow.g.cs
+H:\Class\FP\FinalProject\obj\Debug\App.g.cs
+H:\Class\FP\FinalProject\obj\Debug\FinalProject_MarkupCompile.cache
+H:\Class\FP\FinalProject\obj\Debug\FinalProject_MarkupCompile.lref
+H:\Class\FP\FinalProject\bin\Debug\FinalProject.exe.config
+H:\Class\FP\FinalProject\bin\Debug\FinalProject.exe
+H:\Class\FP\FinalProject\bin\Debug\FinalProject.pdb
+H:\Class\FP\FinalProject\obj\Debug\MainWindow.baml
+H:\Class\FP\FinalProject\obj\Debug\SearchWindow.baml
+H:\Class\FP\FinalProject\obj\Debug\FinalProject.g.resources
+H:\Class\FP\FinalProject\obj\Debug\FinalProject.Properties.Resources.resources
+H:\Class\FP\FinalProject\obj\Debug\FinalProject.csproj.GenerateResource.Cache
+H:\Class\FP\FinalProject\obj\Debug\FinalProject.exe
+H:\Class\FP\FinalProject\obj\Debug\FinalProject.pdb
