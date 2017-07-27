@@ -29,11 +29,14 @@ namespace FinalProject
 		clsDataAccess db;
 		clsSQL mydb = new clsSQL();
 		DataTable dt;
+
+        private ItemsWindow itemsWindow; // ItemsWindow obj
 		
         public MainWindow()
         {
             InitializeComponent();
 			db = new clsDataAccess();
+            
 
 			string sSQL; //Holds a SQL statement.
 			DataSet ds = new DataSet(); //Holds invoice data.
@@ -118,7 +121,7 @@ namespace FinalProject
 		{
 			try
 			{
-			
+			    
 			}
 			catch (Exception ex)
 			{
@@ -169,8 +172,18 @@ namespace FinalProject
 		/// <param name="e"></param>
 		private void UpdateDefTableBtn_Click(object sender, RoutedEventArgs e)
 		{
-			UpdateDefTableBtn.IsEnabled = false;
-		}
+		    try
+		    {
+		        itemsWindow = new ItemsWindow(db, mydb);
+		        this.Hide();
+		        itemsWindow.ShowDialog();
+		        this.Show();
+		    }
+		    catch (Exception ex)
+		    {
+		        throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+		    }
+        }
 
 
 		/// <summary>

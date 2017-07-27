@@ -14,7 +14,7 @@
 		</Menu>
 		<Menu HorizontalAlignment="Left" Height="44" Margin="109,10,0,0" VerticalAlignment="Top" Width="287" RenderTransformOrigin="0.589,0.519" Foreground="#FF302A2A" BorderBrush="#FF302C2C">
 			<Button x:Name="SearchForInvoiceBtn" Content="Search For Invoice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Click="SearchForInvoiceBtn_Click" RenderTransformOrigin="1.641,0.227" Height="35"/>
-			<Button x:Name="UpdateDefTableBtn" Content="Definition Table" VerticalAlignment="Top" Width="129" RenderTransformOrigin="-0.039,0.682" Click="UpdateDefTableBtn_Click" IsEnabled="False" Height="35"/>
+			<Button x:Name="UpdateDefTableBtn" Content="Definition Table" VerticalAlignment="Top" Width="129" RenderTransformOrigin="-0.039,0.682" Click="UpdateDefTableBtn_Click" Height="35"/>
 		</Menu>
 		<GroupBox x:Name="InvoiceInfoGroupBx" Header="Invoice Info" HorizontalAlignment="Left" Height="192" Margin="158,59,0,0" VerticalAlignment="Top" Width="332" BorderBrush="#FF616466">
 			<Button x:Name="Add_UpdateBtn" Content="Add/Update" HorizontalAlignment="Left" Margin="225,100,-2,0" VerticalAlignment="Top" Width="97"/>
