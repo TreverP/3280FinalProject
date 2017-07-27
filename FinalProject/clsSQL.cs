@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CS3280GP
+
 {
     /// <summary>
     /// Class to hold all the SQL statements for accessing the database
@@ -15,4 +16,5 @@ namespace CS3280GP
 
         }
     }
+
 }

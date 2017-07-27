@@ -147,4 +147,6 @@ using System.Reflection;
                 throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
 			}
 		}
+
 }
+			return iNumRows;
