@@ -54,6 +54,15 @@ namespace FinalProject
         {
             return "SELECT * FROM Invoices WHERE InvoiceDate = #" + sDate + "#";
         }
+
+        /// <summary>
+        /// Select all values for all Item Definition from ItemDesc table
+        /// </summary>
+        /// <returns></returns>
+        public string SelectAllItems()
+        {
+            return "SELECT * FROM ItemDesc";
+        }
     }
 
 }
