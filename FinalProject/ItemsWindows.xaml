@@ -1,0 +1,36 @@
+﻿<Window x:Class="FinalProject.ItemsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinalProject"
+        mc:Ignorable="d"
+        Title="Item Definition" Height="300" Width="610.121">
+    <Grid>
+        <DataGrid x:Name="ItemDG" HorizontalAlignment="Left" Margin="10,10,0,55.5" Width="300"/>
+        <Grid HorizontalAlignment="Left" Height="40" Margin="10,222,0,0" VerticalAlignment="Top" Width="203">
+            <Button x:Name="MainMenuBtn" Content="Main Menu" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="74" Click="MainMenuBtn_Click"/>
+        </Grid>
+        <GroupBox Header="Item Details" Height="160" Margin="315,10,10,0" VerticalAlignment="Top">
+            <Grid Margin="10,10,-2,5">
+                <Label Content="Code:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="73" HorizontalContentAlignment="Right"/>
+                <Label Content="Description:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label Content="Cost:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="73" HorizontalContentAlignment="Right"/>
+                <TextBox x:Name="ItemCodeTB" HorizontalAlignment="Left" Height="23" Margin="88,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+                <TextBox x:Name="ItemDescTB" HorizontalAlignment="Left" Height="23" Margin="88,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"/>
+                <TextBox x:Name="ItemCostTB" HorizontalAlignment="Left" Height="23" Margin="88,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
+            </Grid>
+        </GroupBox>
+        <Grid Height="44" Margin="0,175,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="280">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="94*"/>
+                <ColumnDefinition Width="92*"/>
+                <ColumnDefinition Width="93*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="DeleteBtn" Content="Delete" Margin="10,10,9,0" VerticalAlignment="Top" Height="20" Click="DeleteBtn_Click"/>
+            <Button x:Name="EditBtn" Content="Edit" Margin="9,10,8,0" VerticalAlignment="Top" Grid.Column="1" Height="20" RenderTransformOrigin="0.473,0.567" Click="EditBtn_Click"/>
+            <Button x:Name="AddBtn" Content="Add" Margin="9,10,9,0" VerticalAlignment="Top" Grid.Column="2" Height="20" Click="AddBtn_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>
