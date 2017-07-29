@@ -30,6 +30,12 @@ namespace FinalProject
 		clsSQL mydb = new clsSQL();
 		DataTable dt;
 
+        /// <summary>
+        /// Currently selected invoice. 
+        /// This property is passed in to the search window and is set when the user selects an invoice there.
+        /// </summary>
+        string sInvoiceNum;
+
         private ItemsWindow itemsWindow; // ItemsWindow obj
 		
         public MainWindow()
@@ -92,7 +98,7 @@ namespace FinalProject
 
 		/// <summary>
 		/// When the Search For Invoice Button is clicked, it will open up the Search Window.
-		/// With try catch error handling.
+        /// The sInvoiceNum property is set to the selected invoice in the search window.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
@@ -104,6 +110,7 @@ namespace FinalProject
                 this.Hide(); //Hide the main window.
                 search.ShowDialog(); //Bring search window up to the front.
                 this.Show();
+                sInvoiceNum = search.sInvoiceNum;
 			}
 			catch (Exception ex)
 			{

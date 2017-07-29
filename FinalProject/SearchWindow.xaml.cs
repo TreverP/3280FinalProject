@@ -37,6 +37,11 @@ namespace FinalProject
         private clsSQL sql;
 
         /// <summary>
+        /// Number of currently selected invoice
+        /// </summary>
+        public string sInvoiceNum { get; set; }
+
+        /// <summary>
         /// Initialize search window
         /// </summary>
         /// <param name="db">DataAccess class for running queries</param>
@@ -187,7 +192,8 @@ namespace FinalProject
         }
         
         /// <summary>
-        /// Currently only shows a message box with the selected invoice num. Should close the form and return the selected Invoice num to main window somehow.
+        /// Set sInvoiceNum to the InvoiceNum of the currently selected Invoice row in the datagrid and close the SearchWindow.
+        /// This property can then be accessed from the MainWindow.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -196,7 +202,8 @@ namespace FinalProject
             try
             {
                 DataRowView view = (DataRowView)dgInvoices.SelectedItem;
-                MessageBox.Show(view.Row[0].ToString());
+                sInvoiceNum = view.Row[0].ToString();
+                this.Close();
             }
             catch (Exception ex)
             {
