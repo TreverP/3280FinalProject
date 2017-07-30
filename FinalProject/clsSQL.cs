@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +57,42 @@ namespace FinalProject
         }
 
         /// <summary>
+        /// Update an individual Line Item
+        /// </summary>
+        /// <param name="sInvoiceID"></param>
+        /// <param name="iLineItemNum"></param>
+        /// <param name="sItemCode"></param>
+        /// <returns></returns>
+        public string UpdateInvoiceLineItem(string sInvoiceID, string sLineItemNum, string sItemCode)
+        {
+            return "UPDATE LineItems SET ItemCode = " + sItemCode + "WHERE InvoiceNum = " + sInvoiceID + " AND LineItemNum = " + sLineItemNum;
+            
+        }
+
+        /// <summary>
+        /// Create new line item for an invoice
+        /// </summary>
+        /// <param name="sInvoiceID"></param>
+        /// <param name="iLineItemNum"></param>
+        /// <param name="sItemCode"></param>
+        /// <returns></returns>
+        public string CreateInvoiceLineItem(string sInvoiceID, string sLineItemNum, string sItemCode)
+        {
+            return "INSERT INTO LineItems (InvoiceNum, LineItemNum, ItemCode) VALUES (" + sInvoiceID + ", " + sLineItemNum + ", " + sItemCode;
+        }
+
+        /// <summary>
+        /// Delete a single line item for an invoice
+        /// </summary>
+        /// <param name="sInvoiceID"></param>
+        /// <param name="sLineItemNum"></param>
+        /// <returns></returns>
+        public string DeleteInvoiceLineItem(string sInvoiceID, string sLineItemNum)
+        {
+            return "DELETE FROM LineItems WHERE InvoiceID = " + sInvoiceID + " AND LineItemNum = " + sLineItemNum;
+        }
+
+        /// <summary>
         /// Select all values for all Item Definition from ItemDesc table
         /// </summary>
         /// <returns></returns>
@@ -64,20 +101,40 @@ namespace FinalProject
             return "SELECT * FROM ItemDesc";
         }
 
+        /// <summary>
+        /// Update specific Item Def
+        /// </summary>
+        /// <param name="sItemDesc"></param>
+        /// <param name="sItemCode"></param>
+        /// <param name="sItemCost"></param>
+        /// <returns></returns>
         public string UpdateItem(string sItemDesc, string sItemCode, string sItemCost)
         {
             return "UPDATE ItemDesc SET ItemCode = "+ sItemCode + ", ItemDesc = " + sItemDesc + ", Cost = " + sItemCost;
         }
 
+        /// <summary>
+        /// Create a new Item def
+        /// </summary>
+        /// <param name="sItemDesc"></param>
+        /// <param name="sItemCode"></param>
+        /// <param name="sItemCost"></param>
+        /// <returns></returns>
         public string CreateItem(string sItemDesc, string sItemCode, string sItemCost)
         {
             return "INSERT INTO ItemDesc (ItemCode, ItemDesc, Cost) VALUES (" + sItemCode + ", " + sItemDesc + ", " + sItemCost + ")";
         }
 
+        /// <summary>
+        /// Select Item def by ItemCode
+        /// </summary>
+        /// <param name="sItemCode"></param>
+        /// <returns></returns>
         public string SelectItemByCode(string sItemCode)
         {
             return "SELECT * FROM ItemDesc WHERE ItemCode = " + sItemCode;
         }
+        
     }
 
 }
