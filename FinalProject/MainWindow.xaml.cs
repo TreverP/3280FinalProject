@@ -27,8 +27,22 @@ namespace FinalProject
 		/// Hook up when others submit code, verify names.
 		/// </summary>
 		clsDataAccess db;
-		clsSQL mydb = new clsSQL();
+
+        /// <summary>
+        /// SQL query obj
+        /// </summary>
+        private clsSQL sql;
+
+        /// <summary>
+        /// Holds the data 
+        /// </summary>
 		DataTable dt;
+
+        /// <summary>
+        /// Holds the query results
+        /// </summary>
+        private DataSet ds;
+        
 
         /// <summary>
         /// Currently selected invoice. 
@@ -41,60 +55,37 @@ namespace FinalProject
         public MainWindow()
         {
             InitializeComponent();
-			db = new clsDataAccess();
-            
 
-			string sSQL; //Holds a SQL statement.
-			DataSet ds = new DataSet(); //Holds invoice data.
+            db = new clsDataAccess();
+            sql = new clsSQL();
 
-			//Automatic load of drop-down menu for editing an existing invoice.
-			//Try catch for error handling.
-			try
-			{ 
-				int iRet = 0; //Return values.
-				//ds = DataSet.ExecuteSQLStatement("SELECT InvoiceNum from Invoices", ref iRet); //SQL Statement to get values.
-				for (int i = 0; i < iRet; i++)
-				{
-					//InvoiceNumberComBx.Items.Add(ds.Tables[0].Rows[i][0].ToString()); //Adds the invoice numbers into the combo box.
-				}
+            ItemPriceTxtBx.IsReadOnly = true;
+            TotalTxtBx.IsReadOnly = true;
 
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-			}
+            LoadInvoiceComBx();
 
-			///Automatically load drop-down menu for Invoice Date.
-			try
-			{
-				int iRet = 0; //Return Values.
-				ds = db.ExecuteSQLStatement("SELECT InvoiceDate FROM Invoices", ref iRet); //Get all values from the Invoice Date table.
-				for (int i = 0; i < iRet; i++)
-				{
-					//InvoiceDateComBx.Items.Add(ds.Tables[0].Rows[i][0]).ToString();//Add Invoice Dates to the drop-down box.
-				}
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-			}
-
-			///Automatically load drop-down menu for Invoice Total.
-			try
-			{
-				int iRet = 0; //Return values.
-				ds = db.ExecuteSQLStatement("SELECT TotalCharge FROM Invoices", ref iRet); //Get all values from the Invoice Total.
-
-				for (int i = 0; i < iRet; i++)
-				{
-					//InvoiceTotalComBx.Items.Add(ds.Tables[0].Rows[i][0].ToString()); //Add Invoice total to the drop-down box.
-				}
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-			}
 		}
+
+        /// <summary>
+        /// Internal method for loading drop-down menu for editing an existing invoice.
+        /// </summary>
+        private void LoadInvoiceComBx()
+        {
+            try
+            {
+                int iRet = 0;
+                ds = db.ExecuteSQLStatement(sql.SelectAllInvoices(), ref iRet);
+
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    InvoiceNumberComBx.Items.Add(ds.Tables[0].Rows[i][0].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
 
 		/// <summary>
 		/// When the Search For Invoice Button is clicked, it will open up the Search Window.
@@ -106,7 +97,7 @@ namespace FinalProject
 		{
 			try
 			{
-				SearchWindow search = new SearchWindow(db, mydb);
+				SearchWindow search = new SearchWindow(db, sql);
                 this.Hide(); //Hide the main window.
                 search.ShowDialog(); //Bring search window up to the front.
                 this.Show();
@@ -128,9 +119,11 @@ namespace FinalProject
 		{
 			try
 			{
-			    
+                // When selected the UI will be prepped for invoice creation.
+			    UpdateDefMenuItem.IsEnabled = false; // Item def updates not allowed during Invoice creation
+			    SaveBtn.IsEnabled = true;
 			}
-			catch (Exception ex)
+            catch (Exception ex)
 			{
 				throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
 			}
@@ -145,9 +138,11 @@ namespace FinalProject
 		{
 			try
 			{
-				
-			}
-			catch (Exception ex)
+			    // When selected the UI will be prepped for invoice editing.
+			    UpdateDefMenuItem.IsEnabled = false; // Item def updates not allowed during Invoice editing
+			    SaveBtn.IsEnabled = true;
+            }
+            catch (Exception ex)
 			{
 				throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
 			}
@@ -162,7 +157,7 @@ namespace FinalProject
 		{
 			try
 			{
-			
+			    // When selected delete invoice, refresh (clear) UI, repopulate InvoiceNum combobox
 			}
 			catch (Exception ex)
 			{
@@ -172,61 +167,18 @@ namespace FinalProject
 
 
 		/// <summary>
-		/// Allows the user to update a definition table by opening the form.
-		/// Currently disabled.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void UpdateDefTableBtn_Click(object sender, RoutedEventArgs e)
-		{
-		    try
-		    {
-                // Only allow navigation IF:
-                // - Invoice is not being edited
-                // - New Invoice is not being entered
-
-		        itemsWindow = new ItemsWindow(db, mydb);
-		        this.Hide();
-		        itemsWindow.ShowDialog();
-		        this.Show();
-                // Update displayed invoice and Items dropdown list
-		    }
-		    catch (Exception ex)
-		    {
-		        throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
-		    }
-        }
-
-
-		/// <summary>
-		/// Make the Item Price TextBox Read only to display price.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void ItemPriceTxtBx_TextChanged(object sender, TextChangedEventArgs e)
-		{
-			ItemPriceTxtBx.IsReadOnly = true;
-		}
-
-		/// <summary>
-		/// Make the Invoice Total TextBox read only so the total cannot be edited.
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void TotalTxtBx_TextChanged(object sender, TextChangedEventArgs e)
-		{
-			TotalTxtBx.IsReadOnly = true;
-		}
-
-		/// <summary>
 		/// When drop down is selected will populate with Invoice ID's.
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void InvoiceNumberComBx_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			
-		}
+		    ComboBox selectedItem = (ComboBox) sender;
+            
+		    TotalTxtBx.Text = ds.Tables[0].Rows[selectedItem.SelectedIndex][2].ToString();
+            InvoiceDatePicker.Text = ds.Tables[0].Rows[selectedItem.SelectedIndex][1].ToString();
+            // Load data into data grid for selected invoice
+        }
 
 		/// <summary>
 		/// When drop-down is selected it will populate with data.
@@ -235,7 +187,45 @@ namespace FinalProject
 		/// <param name="e"></param>
 		private void ItemDropDownBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-
+            // When an item is selected load the price (read-only) text box
 		}
-	}
+
+        /// <summary>
+        /// Allows the user to update a definition table by opening the form.
+        /// Currently disabled.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateDefMenuItem_Clicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                itemsWindow = new ItemsWindow(db, sql);
+                this.Hide();
+                itemsWindow.ShowDialog();
+                this.Show();
+                // Update displayed invoice and Items dropdown list
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+
+        private void SearchInvoiceMenuItem_Clicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SearchWindow search = new SearchWindow(db, sql);
+                this.Hide(); //Hide the main window.
+                search.ShowDialog(); //Bring search window up to the front.
+                this.Show();
+                sInvoiceNum = search.sInvoiceNum;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+        }
+    }
 }
