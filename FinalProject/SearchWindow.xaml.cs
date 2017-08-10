@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,7 +21,6 @@ namespace FinalProject
     /// </summary>
     public partial class SearchWindow : Window
     {
-<<<<<<< HEAD
         /// <summary>
         /// class for running queries against database
         /// </summary>
@@ -234,11 +229,6 @@ namespace FinalProject
             {
                 HandleError(MethodInfo.GetCurrentMethod().DeclaringType.Name, MethodInfo.GetCurrentMethod().Name, ex.Message);
             }
-=======
-        public SearchWindow()
-        {
-            
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
         }
 
         /// <summary>
@@ -260,7 +250,3 @@ namespace FinalProject
         }
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
