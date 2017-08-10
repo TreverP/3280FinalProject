@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Data;
-=======
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-<<<<<<< HEAD
 namespace FinalProject
 
 {
@@ -140,20 +136,5 @@ namespace FinalProject
         }
         
     }
-=======
-namespace CS3280GP
-
-{
-	/// <summary>
-	/// Class to hold all the SQL statements for accessing the database
-	/// </summary>
-	class clsSQL
-	{
-		public clsSQL()
-		{
-
-		}
-	}
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
 
 }

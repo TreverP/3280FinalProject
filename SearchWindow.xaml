@@ -5,18 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-<<<<<<< HEAD
         Title="SearchWindow" Height="549.274" Width="600" Background="#FFF6F4F0">
-=======
-        Title="SearchWindow" Height="300" Width="300">
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-<<<<<<< HEAD
             <RowDefinition/>
             <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
@@ -70,13 +65,5 @@
             <Button Name="ResetFormBtn" Grid.Column="0" Grid.Row="0" Content="Reset Form" Click="ResetFormBtn_Click"  Width="150" Background="#FFB0B7BC" Foreground="White" FontWeight="Bold"/>
             <Button Name="SelectInvoiceBtn" Grid.Column="1" Grid.Row="0" Content="Select Invoice" Click="SelectInvoiceBtn_Click" IsEnabled="False" Width="150" Background="#FFB0B7BC" Foreground="White" FontWeight="Bold"/>
         </Grid>
-=======
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <DataGrid AutoGenerateColumns="True" Name="dgInvoices" Grid.Column="0" Grid.Row="1">
-
-        </DataGrid>
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
     </Grid>
 </Window>

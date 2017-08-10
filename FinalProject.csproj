@@ -58,12 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
     <Compile Include="ItemsWindows.xaml.cs">
       <DependentUpon>ItemsWindows.xaml</DependentUpon>
     </Compile>
-=======
->>>>>>> aee3c0d483f4aa48222cf8024c1f3189b452b72a
     <Compile Include="SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
     </Compile>
