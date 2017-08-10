@@ -5,33 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Width="525" Height="600">
-	<Grid Margin="5,0,5,-225" HorizontalAlignment="Center">
-		<Menu x:Name="MenuBar" HorizontalAlignment="Left" Height="97" Margin="10,154,0,0" VerticalAlignment="Top" Width="143">
-			<Button x:Name="CreateInvoiceBtn" Content="Create Invoice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Click="CreateInvoiceBtn_Click" Height="25"/>
-			<Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Width="129" Click="EditInvoiceBtn_Click" Height="25"/>
-			<Button x:Name="DeleteInvoiceBtn" Content="Delete Invoice" Width="128" Click="DeleteInvoiceBtn_Click" Height="25"/>
-		</Menu>
-		<Menu HorizontalAlignment="Left" Height="44" Margin="109,10,0,0" VerticalAlignment="Top" Width="287" RenderTransformOrigin="0.589,0.519" Foreground="#FF302A2A" BorderBrush="#FF302C2C">
-			<Button x:Name="SearchForInvoiceBtn" Content="Search For Invoice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Click="SearchForInvoiceBtn_Click" RenderTransformOrigin="1.641,0.227" Height="35"/>
-			<Button x:Name="UpdateDefTableBtn" Content="Definition Table" VerticalAlignment="Top" Width="129" RenderTransformOrigin="-0.039,0.682" Click="UpdateDefTableBtn_Click" IsEnabled="False" Height="35"/>
-		</Menu>
-		<GroupBox x:Name="InvoiceInfoGroupBx" Header="Invoice Info" HorizontalAlignment="Left" Height="192" Margin="158,59,0,0" VerticalAlignment="Top" Width="332" BorderBrush="#FF616466">
-			<Button x:Name="Add_UpdateBtn" Content="Add/Update" HorizontalAlignment="Left" Margin="225,100,-2,0" VerticalAlignment="Top" Width="97"/>
-		</GroupBox>
-		<Label x:Name="InvoiceDateLbl" Content="Invoice Date :" HorizontalAlignment="Left" Margin="158,111,0,0" VerticalAlignment="Top" Width="87"/>
-		<Label x:Name="ItemLbl" Content="Item : " HorizontalAlignment="Left" Margin="158,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.397,1.269" Width="58"/>
-		<Label x:Name="ItemPriceLbl" Content="Item Price : " HorizontalAlignment="Left" Margin="158,171,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.542,-0.269" Width="71"/>
-		<Label x:Name="InvoiceTotalLbl" Content="Invoice Total :" HorizontalAlignment="Left" Margin="167,210,0,0" VerticalAlignment="Top" Height="33" FontSize="18"/>
-		<ComboBox x:Name="ItemDropDownBox" HorizontalAlignment="Left" Margin="259,144,0,0" VerticalAlignment="Top" Width="120" IsEnabled="False" SelectionChanged="ItemDropDownBox_SelectionChanged"/>
-		<TextBox x:Name="ItemPriceTxtBx" HorizontalAlignment="Left" Height="23" Margin="259,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="ItemPriceTxtBx_TextChanged" IsEnabled="False"/>
-		<Button x:Name="SaveBtn" Content="Save" HorizontalAlignment="Left" Margin="401,224,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
-		<DataGrid HorizontalAlignment="Left" Height="277" Margin="27,256,0,0" VerticalAlignment="Top" Width="449" BorderBrush="#FF777F87"/>
-		<ComboBox x:Name="InvoiceNumberComBx" HorizontalAlignment="Left" Margin="259,85,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InvoiceNumberComBx_SelectionChanged"/>
-		<Button x:Name="RemoveItemButton" Content="Remove Item" HorizontalAlignment="Left" Margin="401,538,0,0" VerticalAlignment="Top" Width="75"/>
-		<Label x:Name="InvoiceNumLbl" Content="Invoice Number:" HorizontalAlignment="Left" Margin="158,81,0,0" VerticalAlignment="Top" Width="104"/>
-		<DatePicker x:Name="InvoiceDatePicker" HorizontalAlignment="Left" Margin="259,113,0,0" VerticalAlignment="Top" Width="120"/>
-		<TextBox x:Name="TotalTxtBx" HorizontalAlignment="Left" Height="34" Margin="287,212,0,0" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" Width="109" FontSize="18" TextChanged="TotalTxtBx_TextChanged"/>
+        Title="MainWindow" Width="564.5" Height="678.5" Background="#FFF6F4F0" UseLayoutRounding="False">
+    <Grid Margin="0,0,-5,-1">
+        <Menu Height="22" VerticalAlignment="Top" RenderTransformOrigin="0.589,0.519" Foreground="#FF302A2A" BorderBrush="#FF302C2C" Width="545">
+            <MenuItem x:Name="SearchInvoiceMenuItem" Header="Search Invoices" Click="SearchInvoiceMenuItem_Clicked" Margin="10,0,0,0" Foreground="#FF23384D" FontWeight="Bold"></MenuItem>
+            <MenuItem x:Name="UpdateDefMenuItem" Header="Update Item Def" Click="UpdateDefMenuItem_Clicked" Margin="10,0,0,0" FontWeight="Bold" Foreground="#FF23384D"></MenuItem>
+        </Menu>
+        <GroupBox x:Name="InvoiceInfoGroupBx" Header="Invoice Info" HorizontalAlignment="Left" Height="194" Margin="209,27,0,0" VerticalAlignment="Top" Width="332" BorderBrush="#FFB0B7BC" Foreground="#FF23384D">
+            <Grid HorizontalAlignment="Left" Height="172" Margin="0,0,-2,-3" VerticalAlignment="Top" Width="322">
+                <Grid HorizontalAlignment="Left" Height="101" Margin="166,27,0,0" VerticalAlignment="Top" Width="146">
+                    <TextBox x:Name="TotalTxtBx" Height="34" Margin="19,49,19,0" TextWrapping="Wrap" Text="$0.00" VerticalAlignment="Top" FontSize="18" VerticalContentAlignment="Center" Foreground="#FF23384D" BorderBrush="#FFB0B7BC" Cursor="None"/>
+                    <Label x:Name="InvoiceTotalLbl" Content="Total" Margin="18,10,18,0" VerticalAlignment="Top" Height="34" FontSize="18" HorizontalContentAlignment="Center" Foreground="#FF23384D"/>
+                </Grid>
+                <ComboBox x:Name="InvoiceNumberComBx" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="InvoiceNumberComBx_SelectionChanged" BorderBrush="#FF707070" Foreground="#FF23384D" FontWeight="Bold">
+                    <ComboBox.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                            <GradientStop Color="#FFB0B7BC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ComboBox.Background>
+                </ComboBox>
+                <Label x:Name="InvoiceNumLbl" Content="Invoice Number:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="104" RenderTransformOrigin="0.5,-0.712" Foreground="#FF23384D"/>
+                <Label x:Name="InvoiceDateLbl" Content="Invoice Date :" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="88" Foreground="#FF23384D"/>
+                <DatePicker x:Name="InvoiceDatePicker" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.488,-0.104"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid HorizontalAlignment="Left" Height="283" Margin="10,318,0,0" VerticalAlignment="Top" Width="531" BorderBrush="#FF707070" Foreground="#FF23384D" Background="#FFCAD1D6"/>
+        <Button x:Name="RemoveItemButton" Content="Remove Item" HorizontalAlignment="Left" Margin="359,606,0,0" VerticalAlignment="Top" Width="86" Height="26" Background="#FFE74C3C" Foreground="White" FontWeight="Bold" BorderBrush="#FFDC4738" RenderTransformOrigin="0.912,0.5"/>
+        <Grid HorizontalAlignment="Left" Height="128" Margin="10,62,0,0" VerticalAlignment="Top" Width="174">
+            <Button x:Name="CreateInvoiceBtn" Content="Create Invoice" HorizontalAlignment="Left" VerticalAlignment="Top" Width="128" Click="CreateInvoiceBtn_Click" Height="25" Margin="20,15,0,0" Background="#FF23384D" Foreground="White" FontWeight="Bold" BorderBrush="#FF1D2E3F"/>
+            <Button x:Name="EditInvoiceBtn" Content="Edit Invoice" Click="EditInvoiceBtn_Click" Margin="20,50,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="129" Foreground="#FFFAFAFA" FontWeight="Bold" Background="#FF23384D" BorderBrush="#FF1D2E3F"/>
+            <Button x:Name="DeleteInvoiceBtn" Content="Delete Invoice" Click="DeleteInvoiceBtn_Click" RenderTransformOrigin="4.961,3.76" Margin="20,86,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128" Background="#FFE74C3C" Foreground="White" FontWeight="Bold" BorderBrush="#FFDC4738"/>
+        </Grid>
+        <GroupBox Header="Items" Height="87" Margin="10,226,92,0" VerticalAlignment="Top" BorderBrush="#FFB0B7BC" Foreground="#FF23384D">
+            <Grid Margin="10,0,-2,-1" Height="65" VerticalAlignment="Bottom">
+                <Label x:Name="ItemLbl" Content="Item : " HorizontalAlignment="Left" Margin="10,0,0,37" RenderTransformOrigin="0.397,1.269" Width="62" Height="26" VerticalAlignment="Bottom" Foreground="#FF23384D"/>
+                <Label x:Name="ItemPriceLbl" Content="Price:" HorizontalAlignment="Left" Margin="179,0,0,37" VerticalAlignment="Bottom" RenderTransformOrigin="0.542,-0.269" Width="84" Foreground="#FF23384D"/>
+                <ComboBox x:Name="ItemDropDownBox" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="143" IsEnabled="False" SelectionChanged="ItemDropDownBox_SelectionChanged" RenderTransformOrigin="0.179,0.591" BorderBrush="#FF707070" Foreground="#FF23384D">
+                    <ComboBox.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                            <GradientStop Color="#FFB0B7BC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ComboBox.Background>
+                </ComboBox>
+                <TextBox x:Name="ItemPriceTxtBx" HorizontalAlignment="Left" Height="22" Margin="179,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="86" IsEnabled="False" Foreground="#FF23384D"/>
+                <Button x:Name="Add_UpdateBtn" Content="Add Item" Margin="334,0,10,10" VerticalAlignment="Bottom" RenderTransformOrigin="0.747,0.6" Height="26" FontWeight="Bold" Foreground="White" Background="#FFB0B7BC"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="SaveBtn" Content="Save" Margin="461,606,23.5,0" VerticalAlignment="Top" Height="26" Background="#FF23384D" BorderBrush="#FF1D2E3F" Foreground="White" FontWeight="Bold" IsEnabled="False"/>
 
-	</Grid>
+    </Grid>
 </Window>
